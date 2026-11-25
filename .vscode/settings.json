@@ -1,0 +1,16 @@
+{
+  // Usa o TypeScript do projeto (5.9, fixado no package.json) em vez do embutido no VS Code,
+  // que marca como obsoletas opções válidas na versão do projeto.
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  // Cópias GERADAS dos tokens de design (o app usa apps/mobile/lib/core/theme/app_tokens.g.dart).
+  // Fora do projeto Flutter, o analisador do Dart não acha o pacote flutter e acusa erros falsos.
+  "dart.analysisExcludedFolders": ["node_modules", "packages/design-tokens/dist"],
+
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/build/**": true,
+    "**/.dart_tool/**": true
+  }
+}

@@ -15,7 +15,8 @@
     "test:unit": "jest",
     "test:int": "jest -c jest.int.config.js --runInBand",
     "test": "npm run test:unit && npm run test:int",
-    "test:int:deploy": "jest -c jest.int.config.js --runInBand --globalSetup=./test/global-setup-deploy.ts"
+    "test:int:deploy": "jest -c jest.int.config.js --runInBand --globalSetup=./test/global-setup-deploy.ts",
+    "start:prod": "dotenv -e ../../.env -v APP_ENV=production -- node dist/main.js"
   },
   "dependencies": {
     "@alertacidade/shared-types": "2.0.0",
