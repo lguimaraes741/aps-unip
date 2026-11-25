@@ -1,0 +1,1140 @@
+{
+ "_sobre": "Rótulos feitos pelo Claude em 24/11/2026 lendo título e resumo de cada item; a conferir pelo grupo. alert = alagamento ocorrido nas últimas 72 h numa das 16 cidades monitoradas; flood = texto sobre alagamento/enchente (inclui previsão, prevenção, outra região).",
+ "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/mpf-pede-mudancas-na-gestao-de-politicas-para-populacao-de-rua-em-sp": {
+  "flood": false,
+  "alert": false
+ },
+ "https://agenciabrasil.ebc.com.br/politica/noticia/2026-11/projeto-de-regulacao-das-big-techs-sera-votado-na-proxima-semana": {
+  "flood": false,
+  "alert": false
+ },
+ "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/plano-busca-fortalecer-protagonismo-das-mulheres-no-agronegocio": {
+  "flood": false,
+  "alert": false
+ },
+ "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/queda-de-arvore-em-escola-publica-em-sp-deixa-cinco-pessoas-feridas": {
+  "flood": false,
+  "alert": false
+ },
+ "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/dolar-cai-para-r-591-com-expectativa-de-ajuste-fiscal": {
+  "flood": false,
+  "alert": false
+ },
+ "https://agenciabrasil.ebc.com.br/justica/noticia/2026-11/ninho-do-urubu-engenheiros-sao-condenados-em-2a-instancia-por-incendio": {
+  "flood": false,
+  "alert": false
+ },
+ "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/condenado-pela-morte-de-marielle-major-ronald-e-demitido-da-pm": {
+  "flood": false,
+  "alert": false
+ },
+ "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/mineradora-e-multada-em-r-169-milhoes-no-para-por-poluicao-de-rio": {
+  "flood": false,
+  "alert": false
+ },
+ "https://agenciabrasil.ebc.com.br/direitos-humanos/noticia/2026-11/ministerio-cria-protocolo-policial-com-foco-em-raca-e-genero": {
+  "flood": false,
+  "alert": false
+ },
+ "https://agenciabrasil.ebc.com.br/internacional/noticia/2026-11/onu-aprova-proposta-do-brasil-de-turismo-amigavel-para-muculmanos": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/curiosidades/por-que-chefs-recomendam-comer-feijao-frio-a-combinacao-com-alho-poro-e-frango-que-renova-o-almoco-de-verao/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/internacional/secretario-geral-da-otan-deve-se-reunir-com-trump-na-quarta-feira-25/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/esportes/futebol/internacional-futebol/baptista-segue-no-inter-apos-derrota-e-busca-milagre-contra-o-rebaixamento/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/esportes/brasileirao/time-c-do-palmeiras-perde-para-a-chapecoense-no-brasileirao/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/agro/soja-tem-alta-em-chicago-com-expectativa-de-avancos-das-exportacoes-dos-eua/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/nacional/sudeste/sp/hope-nasce-a-nova-ararinha-azul-do-zoologico-de-sao-paulo/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/infra/precos-da-petrobras-seguem-adequados-mas-avaliamos-ajustes-diz-diretora/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/economia/money/mercado/braskem-desaba-14-na-bolsa-apos-acordo-com-credores/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/esportes/futebol/futebol-internacional/libertadores-da-america/libertadores-final-esgota-ingressos-e-deve-movimentar-r-430-milhoes/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/agro/croplife-espera-regulamentacao-de-bioinsumos-ainda-em-2026/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/saude/sao-paulo-deve-comecar-vacinacao-contra-mpox-nesta-quarta-feira-25/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/internacional/dia-de-acao-de-gracas-pode-comecar-com-inundacoes-na-costa-leste-dos-eua/": {
+  "flood": true,
+  "alert": false,
+  "note": "previsão, EUA"
+ },
+ "https://www.cnnbrasil.com.br/esportes/basquete/nba-lanca-plataforma-no-brasil-que-pode-levar-fas-aos-jogos-da-liga-nos-eua/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/internacional/superlua-e-vista-sobre-o-partenon-em-atenas-e-proporciona-espetaculo/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/economia/money/negocios/justica-da-72-horas-a-99food-para-comprovar-fim-de-clausulas-de-banimento/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/esportes/futebol/futebol-internacional/champions-league/como-vence-aek-atenas-e-segue-na-cola-de-gigantes-europeus-na-champions/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/politica/alerj-propoe-ajustar-salario-de-governador-para-r-36-mil/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/internacional/reino-unido-alerta-para-sabotagem-russa-a-empresas-parceiras-da-ucrania/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/esportes/futebol/futebol-internacional/champions-league/com-gol-contra-relampago-porto-vence-feyenoord-pela-champions/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/politica/cni-move-nova-acao-no-stf-contra-os-atos-que-regulamentam-o-fim-da-6x1/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/nacional/sudeste/sp/pf-investiga-empresario-preso-em-portugal-por-envio-de-cocaina-a-europa/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/internacional/video-prefeito-e-governadora-de-nova-york-distribuem-perus-para-familias/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/infra/magda-petrobras-ja-nao-e-empresa-de-petroleo-e-gas-mas-de-energia/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/nacional/sudeste/sp/rebeliao-em-presidio-de-tremembe-deixa-cinco-detentos-feridos/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/curiosidades/aos-83-anos-ele-enfrentou-uma-tempestade-avassaladora-por-um-fiel-e-pagou-com-a-propria-vida/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/internacional/eua-suspendem-voos-para-o-aeroporto-internacional-de-chicago-apos-falha/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/esportes/futebol/futebol-internacional/champions-league/vini-marca-real-madrid-goleia-psv-e-vira-lider-provisorio-da-champions/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/esportes/futebol/futebol-internacional/champions-league/manchester-city-tropeca-contra-o-napoli-na-champions-league/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/politica/congresso-vai-atuar-em-defesa-de-van-hattem-em-acao-no-stf-diz-alcolumbre/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/politica/condenado-ha-9-meses-pela-morte-de-marielle-major-e-demitido-da-pm-do-rio/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/agro/fala-de-trump-sobre-filipinas-nao-preocupa-diz-andre-de-paula/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/esportes/futebol/futebol-internacional/champions-league/arsenal-perde-chances-e-empata-contra-o-borussia-dortmund-pela-champions/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/ciencia/sonda-da-nasa-em-direcao-a-marte-registra-imagens-ineditas-da-terra-espaconave-estava-a-62-000-quilometros-de-distancia/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/infra/voos-domesticos-batem-recorde-com-857-milhoes-de-passageiros-em-2026/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/agro/jbs-convoca-assembleia-para-votar-nomeacao-de-wesley-batista-filho-como-ceo/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/internacional/cia-sofre-ataque-hacker-em-sistema-de-informacoes-nao-sigilosas/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/internacional/peru-fecha-temporariamente-de-58-portos-devido-a-ondas-fortes-do-el-nino/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/pop/musica/sandy-e-junior-anunciam-turne-em-sao-paulo-para-2027/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/nacional/sudeste/rj/neozelandes-e-chinesa-sao-presos-por-suposto-trafico-internacional-de-bebes/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/economia/money/mercado/fusao-com-tesla-pode-facilitar-entrada-da-spacex-no-sp-500-diz-jpmorgan/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/economia/money/macroeconomia/pacote-fiscal-possibilita-ajustes-no-orcamento-e-reflete-na-queda-do-dolar/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/pop/celebridades/o-concurso-miss-universo-esta-mergulhado-no-caos-novamente/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/economia/money/mercado/ouro-fecha-em-queda-com-perspectiva-de-alta-adicional-nos-juros-pelo-fed-e-de-olho-em-pce/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/economia/money/mercado/petroleo-fecha-em-alta-com-aumento-dos-riscos-a-navegacao-em-ormuz-e-tensoes-na-arabia-saudita/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/politica/cleitinho-e-anunciado-como-atracao-musical-no-reveillon/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/politica/advogados-tentam-distensionar-relacao-entre-andre-janones-e-pt/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/internacional/eua-autoridade-contestara-decisao-que-suspende-envio-de-e-mails-religiosos/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/ciencia/astronomos-identificam-um-quasar-recordista-no-universo-primitivo-ele-e-um-dos-objetos-que-mais-liberam-energia-e-luz/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/economia/money/negocios/black-friday-nos-eua-como-comprar-em-lojas-americanas-morando-no-brasil/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/politica/ninguem-vai-morrer-diz-marinho-sobre-folga-no-comercio-com-o-fim-da-6x1/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/esportes/futebol/corinthians/corinthians-justica-cobra-mp-e-adia-decisao-sobre-intervencao-judicial/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/economia/money/mercado/juros-futuros-caem-com-sinalizacao-do-governo-sobre-pec-para-limitar-gastos/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/economia/money/tecnologia/banco-central-autoriza-binance-a-operar-no-mercado-de-cambio-no-brasil/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/internacional/procurador-despista-sobre-investigacao-contra-ceo-da-nvidia-pelo-que/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/politica/justica-italiana-adia-julgamento-de-zambelli-para-o-ano-que-vem/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/esportes/futebol/futebol-internacional/futebol-espanhol/goleiro-owono-treina-sozinho-em-retorno-ao-clube-apos-morte-de-atacante/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/infra/ministro-defende-revisao-do-modelo-financeiro-e-do-papel-da-infraero/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/economia/money/macroeconomia/nova-etapa-do-ajuste-fiscal-deve-ficar-para-lula-4/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/esportes/futebol/santos/jornal-espanhol-critica-neymar-em-derrota-do-santos-37-bolas-perdidas/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www.cnnbrasil.com.br/internacional/familias-na-regiao-de-donetsk-na-ucrania-devem-se-retirar-diz-autoridade/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/arvore-cai-em-escola-estadual-e-deixa-sete-feridos-na-zona-leste-de-sao-paulo.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/fundador-da-hurb-e-preso-no-rio-de-janeiro-apos-dez-meses-foragido.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/justica-cobra-gestao-nunes-e-universal-por-pendencias-em-acordo-que-permitiu-alvara-do-templo-de-salomao.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/colunas/marilizpereirajorge/2026/11/campopiano-tem-sangue-nas-maos.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/ambiente/2026/11/pela-1a-vez-ararinha-azul-nasce-em-zoologico-brasileiro.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/confira-a-partir-das-21h-desta-terca-24-o-resultado-do-concurso-3090-da-mega-sena.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/mortes-gostava-de-viajar-de-trem-para-santos-e-guardou-a-lembranca-por-toda-a-vida.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/ambiente/2026/11/peixes-morrem-em-rios-ligados-ao-xingu-no-para-mineradora-teve-vazamento-de-rejeitos-na-regiao.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/colunas/joanna-moura/2026/11/tao-bonita-pena-que-e-tao-forte.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/educacao/2026/11/unesp-abre-inscricoes-para-selecao-com-nota-do-enem-veja-cursos-com-mais-vagas.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/medico-usa-prancha-e-salva-motorista-em-alagamento-em-mogi-das-cruzes-sp.shtml": {
+  "flood": true,
+  "alert": false,
+  "note": "Mogi das Cruzes: Grande SP, mas fora das 16 cidades monitoradas"
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/sob-alerta-de-chuvas-tupancireta-rs-orienta-moradores-a-buscar-abrigo-e-suspende-aulas-por-sete-dias.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/7-em-cada-10-multas-por-pedagio-free-flow-em-sao-paulo-nao-foram-pagas.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/queda-de-passarela-apos-colisao-de-carretas-provoca-29-km-de-congestionamento-na-regis-bittencourt.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/casal-morre-afogado-em-casa-apos-chuva-alagar-rua-em-campo-largo-pr.shtml": {
+  "flood": true,
+  "alert": false,
+  "note": "Campo Largo (PR): fora da área monitorada"
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/prefeito-de-seropedica-rj-e-alvo-de-operacao-que-investiga-infiltracao-de-milicia-na-administracao-publica.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/explosao-atinge-quatro-imoveis-e-deixa-um-morto-no-interior-de-pernambuco.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/pane-obriga-passageiros-a-deixar-trem-do-metro-do-rio-rede-tem-segundo-dia-seguido-de-falhas.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/ambiente/2026/11/inglaterra-registra-recorde-de-mortes-relacionadas-ao-calor-no-verao-deste-ano.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/mulher-e-morta-a-facadas-pelo-ex-namorado-em-sp-apos-pedir-medida-protetiva.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/policia-investiga-injuria-racial-apos-funcionarias-de-clinica-fazerem-black-face-em-sp.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/blogs/andancas-na-metropole/2026/11/a-historia-da-walita-e-do-primeiro-liquidificador-nacional.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/falha-em-equipamento-reduz-velocidade-da-linha-1-azul-do-metro-em-sao-paulo.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/educacao/2026/11/projeto-propoe-retomar-obrigatoriedade-de-aulas-de-sociologia-e-filosofia-em-todo-o-ensino-medio.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/chuva-inunda-inunda-ruas-casas-e-deixa-desalojados-no-interior-de-sp.shtml": {
+  "flood": true,
+  "alert": false,
+  "note": "Itaberá: interior de SP, fora da área"
+ },
+ "https://www1.folha.uol.com.br/colunas/rodrigo-toniol/2026/11/missionarios-do-seculo-21-e-o-problema-da-portaria-dos-condominios-fechados.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/governo-amplia-verba-federal-destinada-a-tupancireta-rs-atingida-por-tempestade.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/ambiente/2026/11/governador-eleito-do-para-tem-multas-por-desmatamento-e-vice-foi-autuada-por-garimpo.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/sao-paulo-tem-alerta-de-perigo-para-tempestade-nesta-terca-24.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/ambiente/2026/11/a-brasileira-premiada-que-descobriu-6-novas-especies-de-tamandua-nao-conhecemos-quase-nada-da-nossa-fauna.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/pcc-prioriza-trafico-internacional-e-cv-avanca-no-norte-e-nordeste-aponta-estudo-da-abin.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/quase-metade-dos-lares-em-sao-paulo-tem-cao-ou-gato-aponta-levantamento.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/regiao-sul-tem-alerta-de-grande-perigo-para-tempestades-nesta-terca-feira-24.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/sabesp-diz-ter-normalizado-abastecimento-de-agua-em-sp-apos-troca-de-valvula-no-cantareira.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/influenciadora-e-roubada-em-sp-recupera-celular-e-diz-ter-recebido-da-policia-a-bicicleta-usada-por-suspeito.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/menino-de-3-anos-morre-baleado-durante-conflito-em-terra-indigena-no-rs.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/folha-vence-em-duas-categorias-do-43o-premio-direitos-humanos-de-jornalismo.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/colunas/vera-iaconelli/2026/11/a-psicanalise-precisa-de-um-metoo.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/ambiente/2026/11/o-destino-da-transicao-energetica.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/mortes-dedicou-a-vida-a-familia-e-a-fe.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/pm-do-rio-tem-metade-da-frota-de-viaturas-parada-e-17-mil-agentes-a-menos-do-que-a-lei-preve.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/torcedor-do-palmeiras-morre-apos-ser-empurrado-por-seguranca-e-bater-a-cabeca.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/sao-paulo-em-estado-de-atencao-para-alagamentos-e-defesa-civil-envia-alerta-severo-nesta-segunda-23.shtml": {
+  "flood": true,
+  "alert": true,
+  "note": "alagamentos na capital em 23/11"
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/garupa-morre-e-gcm-fica-ferido-apos-moto-fugir-de-dispersao-de-baile-funk-em-sao-bernardo-sp.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/tupancireta-rs-tenta-retomar-fornecimento-de-energia-eletrica-tres-dias-apos-ser-devastada-por-temporal.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/casal-da-habitacao-de-sp-e-investigado-em-inquerito-sobre-cobranca-por-acesso-a-moradias-da-cohab.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/ambiente/2026/11/influencia-da-arabia-saudita-pesou-no-colapso-da-cop31.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/ha-200-anos-brasil-se-comprometia-a-acabar-com-o-trafico-negreiro-so-para-ingles-ver.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/homem-de-74-anos-com-alzheimer-e-encontrado-vivo-apos-11-dias-perdido-na-floresta-amazonica.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/educacao/2026/11/primeira-fase-da-unesp-tem-questoes-sobre-doutrina-monroe-ia-e-terras-raras.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/chuva-de-140-mm-deixa-ubatuba-sp-alagada-e-em-alerta-para-deslizamentos.shtml": {
+  "flood": true,
+  "alert": false,
+  "note": "Ubatuba: litoral, fora da área"
+ },
+ "https://www1.folha.uol.com.br/ambiente/2026/11/colapso-da-cop31-reabre-debate-sobre-modelo-de-conferencia-da-onu.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/turista-morto-a-tiros-no-centro-do-rio-era-agente-penitenciario-nos-eua-dizem-amigos.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/onibus-perde-freio-e-atinge-casa-na-zona-norte-de-sao-paulo-sete-ficam-feridos.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/enxurrada-arrasta-tres-pessoas-para-dentro-de-rio-na-zona-sul-de-sao-paulo.shtml": {
+  "flood": true,
+  "alert": true,
+  "note": "enxurrada no Jabaquara (capital)"
+ },
+ "https://www1.folha.uol.com.br/educacao/2026/11/artigo-incluido-sem-alarde-na-lei-do-enamed-livra-de-punicoes-99-cursos-de-medicina-mal-avaliados.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/ambiente/2026/11/el-nino-acirra-disputa-de-estados-por-agua-da-transposicao-do-sao-francisco.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/podcasts/2026/11/podcast-explica-quem-precisa-de-um-kit-de-emergencia-e-em-que-contextos.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/cidade-de-sao-paulo-tem-divergencia-sobre-qual-zoneamento-esta-em-vigor.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/sao-paulo-tera-segunda-feira23-abafada-e-com-pancadas-de-chuva-a-tarde.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/carcacas-do-que-sobrou-da-voepass-estao-abandonadas-em-cemiterio-de-avioes-no-interior-de-sp.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/investigacao-identifica-6-dos-9-mortos-encontrados-em-barco-a-deriva-no-para.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/ambiente/2026/11/colapso-da-cop31-e-resultado-do-acordo-de-paris-ainda-bem.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/educacao/2026/11/unesp-divulga-gabarito-da-1a-fase-do-vestibular-2027-confira.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/defesa-civil-emite-alerta-severo-de-chuva-para-sao-paulo-apos-25-avisos-no-estado.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/ambiente/2026/11/cop31-desperdica-oportunidade-e-abusa-da-paciencia-de-negociadores-segundo-especialistas.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/motorista-invade-maratona-em-sorocaba-e-tenta-atropelar-corredores.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/defesa-civil-alerta-para-novos-temporais-no-rs-apos-chuvas-que-deixaram-5-mortos.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/sabesp-troca-valvula-no-cantareira-mas-bairros-de-sao-paulo-e-guarulhos-seguem-sem-agua.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/homem-armado-assalta-joalheria-em-shopping-da-zona-sul-de-sao-paulo.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/mortes-desde-o-primeiro-encontro-soube-que-se-casaria-com-sua-parceira-de-vida.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/rodovias-em-sp-tem-congestionamento-no-retorno-do-feriado-da-consciencia-negra.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/policia-investiga-se-homem-encontrado-morto-no-morumbi-em-sp-foi-vitima-de-tribunal-do-crime.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/governo-federal-reconhece-calamidade-em-cidade-do-rs-apos-temporal-que-deixou-5-mortos.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/ambiente/2026/11/veja-outras-grandes-reunioes-da-cop-que-terminaram-em-fracasso-impasse-ou-decepcao.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/por-que-aplaudir-durante-o-pouso-de-um-aviao-pode-irritar-as-pessoas-segundo-especialistas.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/busca-por-vestigios-e-suspeitos-ganha-reforco-da-ia-e-chega-a-casos-de-homicidio.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/blogs/tudo-mais-um-pouco/2026/11/como-cuidar-da-bromelia-estrela-da-terra.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/ambiente/2026/11/cop31-se-torna-a-mais-longa-conferencia-climatica-da-onu.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/colunas/marceloleite/2026/11/o-fim-do-mundo-esta-proximo-mas-so-para-a-maioria.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/ambiente/2026/11/sede-da-cop31-turquia-taxa-iates-para-reduzir-impacto-no-ecossistema-mediterraneo.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/equilibrioesaude/2026/11/agressor-havia-bebido-em-3-de-cada-10-casos-de-violencia-atendidos-pelo-sus-em-sp.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/confira-a-partir-das-11h-deste-domingo-22-o-resultado-do-concurso-3089-da-mega-sena.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/aparecida-tem-escolas-alagada-e-carros-submersos-apos-fortes-chuvas-de-sexta.shtml": {
+  "flood": true,
+  "alert": false,
+  "note": "Aparecida: interior, fora da área"
+ },
+ "https://www1.folha.uol.com.br/blogs/sobre-trilhos/2026/11/trens-natalinos-terao-roteiros-pagos-e-atracoes-gratis-pelo-pais.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/colunas/giovana-madalosso/2026/11/se-nao-fosse-a-arma-a-tragedia-teria-acontecido.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/colunas/becky-korich/2026/11/primeiro-o-tomate-organico-agora-a-pessoa-organica.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/dois-tornados-atingiram-cidades-e-causam-estragos-no-parana.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/velejador-americano-resgatado-pela-marinha-em-alto-mar-tem-alta-apos-dez-dias-internado.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/mulheres-sao-resgatadas-apos-ficarem-presas-em-canion-na-chapada-diamantina.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/ambiente/2026/11/sem-citar-combustiveis-fosseis-cop31-corre-risco-de-nao-terminar.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/tres-corpos-com-sinais-de-violencia-sao-encontrados-em-sao-paulo-em-24-horas.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/mortes-levou-fantoches-as-salas-de-aulas-e-realizou-sonho-de-ver-elefantes-na-africa.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/educacao/2026/11/novo-enamed-se-aproxima-de-exames-aplicados-nos-eua-e-em-outros-paises.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/colunas/mauro-calliari/2026/11/mamdani-o-prefeito-pop.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/homem-sobrevive-apos-ter-faca-atravessada-no-pescoco-em-minas-gerais.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/colunas/antonioprata/2026/11/na-pendura.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/temporais-afetam-quase-20-mil-pessoas-em-36-cidades-do-rio-grande-do-sul.shtml": {
+  "flood": true,
+  "alert": false,
+  "note": "Rio Grande do Sul"
+ },
+ "https://www1.folha.uol.com.br/cotidiano/2026/11/governo-nao-esta-preparado-para-el-nino-e-mudancas-climaticas-aponta-auditoria-do-tcu.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://www1.folha.uol.com.br/ambiente/2026/11/o-que-uma-antiga-cidade-subterranea-da-turquia-pode-nos-ensinar-sobre-como-escapar-do-calor-e-do-frio-extremos.shtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/video-mostra-momento-em-que-casa-desaba-na-vila-maria-zona-norte-de-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/peixes-mortos-se-acumulam-em-gradil-do-parque-da-aclimacao-apos-chuva-moradores-relatam-problema-recorrente.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/anatel-identifica-comercio-em-guarulhos-responsavel-por-interferencia-em-gps-de-avioes-no-aeroporto-internacional-de-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/guia/guia-sp/noticia/2026/11/24/conceicao-evaristo-80-anos-autora-participa-de-roda-de-conversa-e-sessao-de-autografos-em-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/casa-desaba-na-vila-maria-e-mulher-fica-ferida.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/cidade-de-sao-paulo-entra-em-estado-de-atencao-para-alagamentos-em-todas-as-regioes.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/bicicleta-de-suspeito-de-roubar-celular-de-influenciadora-em-sp-foi-entregue-a-policia-diz-vitima.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/corpo-de-jurista-fabio-konder-comparato-e-velado-nesta-terca.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/padre-julio-lancellotti-anuncia-whey-protein-de-graca-a-alunos-de-academia-social-para-pessoas-em-situacao-de-rua-em-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/videos-mostram-jovem-andando-de-moto-eletrica-horas-antes-de-desaparecer-veiculo-foi-achado-em-area-de-mata-em-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/justica-bloqueia-r-38-milhoes-e-sequestra-imoveis-e-carros-de-luxo-ligados-a-mc-ryan-sp-em-operacao-contra-o-pcc.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/primeiro-filhote-de-ararinha-azul-nascido-em-zoologico-brasileiro-e-apresentado-em-sp-especie-e-considerada-extinta-na-natureza.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/pf-prende-tratorista-do-aeroporto-de-guarulhos-e-apreende-r-547-mil-em-dinheiro-na-casa-dele.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/pf-prende-25-pessoas-em-operacoes-contra-esquema-bilionario-de-lavagem-de-dinheiro-mc-ryan-sp-tem-bens-bloqueados.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/sp-encerra-surto-de-sarampo-apos-12-semanas-sem-novos-casos-41-pessoas-foram-infectadas-neste-ano.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/padrasto-e-suspeito-de-matar-enteado-a-tiros-na-frente-da-mae-da-vitima-e-ligar-para-a-pm-em-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/operacao-prende-integrante-do-pcc-e-mulher-suspeitos-de-lavar-dinheiro-do-trafico-justica-determina-bloqueio-de-r-456-milhoes.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/video-ainda-sinto-muita-dor-de-cabeca-mas-a-justica-esta-sendo-feita-diz-atriz-que-acusa-namorado-advogado-por-tortura-em-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/empresario-preso-acusado-de-matar-namorada-e-enteado-e-denunciado-pelo-mp-por-ameacar-vizinho-com-arma-em-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/quem-e-mc-ryan-sp-funkeiro-alvo-de-operacao-da-pf-contra-esquema-bilionario-de-lavagem-de-dinheiro.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/jurista-fabio-konder-comparato-referencia-na-defesa-dos-direitos-humanos-morre-aos-90-anos.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/mp-pede-intervencao-judicial-no-corinthians-apos-apontar-divida-de-r-28-bilhoes.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/pf-faz-operacoes-em-sp-e-outros-estados-contra-lavagem-de-dinheiro-e-criptomoedas-ilegais-justica-bloqueia-r-43-bilhoes.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/chuva-em-sp-bombeiros-resgatam-criancas-de-escola-inundada-patio-do-detran-fica-alagado-e-mulher-segue-desaparecida.ghtml": {
+  "flood": true,
+  "alert": true,
+  "note": "escola inundada e pátio alagado na capital"
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/mae-de-tres-filhos-e-morta-a-facadas-tres-dias-apos-pedir-medida-protetiva-em-sp-ex-companheiro-e-encontrado-morto-em-motel.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/escolas-estaduais-de-sp-registraram-13-mil-ocorrencias-relacionadas-a-violencia-por-dia-em-2025-aponta-estudo.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/24/previsao-do-tempo-hoje-para-sao-paulo-sp-sol-com-algumas-nuvens-chove-rapido-durante-o-dia-e-a-noite.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/24/previsao-do-tempo-hoje-para-sao-bernardo-do-campo-sp-sol-com-muitas-nuvens-pancadas-de-chuva-a-tarde-e-a-noite.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/24/previsao-do-tempo-hoje-para-santo-andre-sp-sol-com-muitas-nuvens-pancadas-de-chuva-a-tarde-e-a-noite.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/24/previsao-do-tempo-hoje-para-osasco-sp-sol-com-muitas-nuvens-e-periodos-de-ceu-nublado-noite-com-pancadas-de-chuva.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/24/previsao-do-tempo-hoje-para-guarulhos-sp-sol-com-muitas-nuvens-e-periodos-de-ceu-nublado-noite-com-pancadas-de-chuva.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/24/video-ex-jogador-vampeta-nega-ter-atropelado-entregadora-mostra-carro-sem-avarias-e-diz-que-nao-houve-colisao-nenhuma.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/bombeiros-fazem-buscas-por-mulher-que-teria-caido-no-rio-tamanduatei-na-zona-sul-de-sp.ghtml": {
+  "flood": true,
+  "alert": true,
+  "note": "pessoa arrastada no rio Tamanduateí durante o temporal (capital)"
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/jovem-de-19-anos-desaparece-apos-sair-de-casa-para-estagio-em-guarulhos-moto-eletrica-e-encontrada-em-outro-bairro.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/video-arvore-cai-sobre-carros-em-moema-apos-tempestade-na-zona-sul-de-sp.ghtml": {
+  "flood": true,
+  "alert": true,
+  "note": "título é queda de árvore, mas o resumo relata ruas alagadas e carros submersos na capital no mesmo temporal"
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/deputada-de-sp-diz-que-foi-detida-e-deportada-por-israel-ao-tentar-entrar-na-cisjordania.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/influenciadora-e-assaltada-recupera-celular-e-diz-que-ganhou-bicicleta-do-ladrao-de-policiais-1.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/turismo-e-viagem/noticia/2026/11/23/50-best-divulga-ranking-ampliado-dos-melhores-restaurantes-da-america-latina-brasil-emplaca-6.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/temos-o-direito-de-estar-em-qualquer-lugar-com-dignidade-diz-atriz-adriana-lessa-apos-episodio-de-racismo-em-shopping-de-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/policial-civil-e-preso-por-importunacao-sexual-suspeito-de-filmar-adolescente-de-14-anos-em-mercado-em-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/mulher-submetida-a-escravidao-domestica-por-40-anos-era-obrigada-a-trabalhar-para-ong-dos-patroes-na-zona-norte-de-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/influenciador-neguinho-do-corte-e-preso-durante-velorio-de-amigo-na-zona-sul-de-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/video-mostra-vampeta-discutindo-com-motoboys-apos-acidente-de-transito-em-sp-completamente-bebado-diz-entregadora.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/pm-atende-ocorrencia-de-ameaca-de-bomba-em-predio-comercial-na-zona-sul-de-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/cidade-de-sp-estado-de-atencao-alagamentos.ghtml": {
+  "flood": true,
+  "alert": true,
+  "note": "ruas alagadas e túnel bloqueado na capital"
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/mpox-vacina-contra-a-doenca-comeca-a-ser-distribuida-em-sp-nesta-segunda-veja-quem-pode-tomar.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/mais-de-380-mil-consultas-com-especialistas-estao-na-fila-de-espera-da-rede-municipal-de-saude-de-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/quase-metade-dos-lares-em-sp-tem-gatos-e-cachorros.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/influenciadora-e-assaltada-recupera-celular-e-diz-que-ganhou-bicicleta-do-ladrao-de-policiais.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/apos-manutencao-da-sabesp-escola-estadual-na-zona-norte-de-sp-fica-sem-agua.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/guia/guia-sp/noticia/2026/11/23/28a-festa-do-livro-da-usp-reune-245-editoras-com-descontos-de-pelo-menos-50percent.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/onibus-perde-freio-bate-em-muro-de-casa-e-deixa-ao-menos-sete-feridos-na-zona-norte-de-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/quem-era-gabriel-scherer-auxiliar-de-video-da-globo-que-morreu-em-acidente-durante-viagem-com-a-familia.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/policia-analisa-imagens-de-cameras-de-hotel-para-esclarecer-morte-de-torcedor-do-palmeiras-apos-briga-com-seguranca-em-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/fred-bruno-anuncia-o-nascimento-do-segundo-filho-maior-amor-que-um-ser-humano-e-capaz-de-sentir.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/apos-temporal-sp-tem-problemas-nos-trens-imoveis-interditados-e-buscas-por-pessoa-arrastada-por-rio.ghtml": {
+  "flood": true,
+  "alert": true,
+  "note": "pessoa arrastada por rio e estragos do temporal na capital"
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/23/o-que-se-sabe-e-o-que-falta-saber-sobre-palmeirense-empurrado-e-morto-apos-suposto-assedio-contra-funcionaria-de-hotel-em-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/23/previsao-do-tempo-hoje-para-sao-paulo-sp-sol-com-algumas-nuvens-chove-rapido-durante-o-dia-e-a-noite.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/23/previsao-do-tempo-hoje-para-sao-bernardo-do-campo-sp-sol-e-muitas-nuvens-de-manha-e-chuva-forte-a-tarde-noite-com-pancadas-de-chuva.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/23/previsao-do-tempo-hoje-para-santo-andre-sp-sol-e-muitas-nuvens-de-manha-e-chuva-forte-a-tarde-noite-com-pancadas-de-chuva.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/23/previsao-do-tempo-hoje-para-osasco-sp-sol-com-muitas-nuvens-e-pancadas-de-chuva-a-tarde-a-noite-ocorre-temporal.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/23/previsao-do-tempo-hoje-para-guarulhos-sp-sol-com-muitas-nuvens-pancadas-de-chuva-a-tarde-e-a-noite.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/22/cidade-de-sp-entra-em-estado-de-atencao-para-alagamentos-defesa-civil-emite-alerta-severo.ghtml": {
+  "flood": true,
+  "alert": true,
+  "note": "ruas alagadas e moradores ilhados na capital"
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/22/passageiro-morre-e-gcm-fica-ferido-apos-motociclista-avancar-contra-equipe-em-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/22/torcedor-palmeiras-morre-hotel-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/22/pm-e-preso-apos-disparar-arma-na-rua-e-ameacar-vigilantes-de-parque-na-zona-leste-de-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/22/criminoso-armado-invade-joalheria-em-shopping-na-zona-sul-de-sp-rouba-aliancas-e-foge-em-carro-furtado.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/22/incendio-atinge-centro-comunitario-de-igreja-na-zona-norte-de-sp-e-fogo-volta-na-manha-deste-domingo.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/22/sabesp-conclui-manutencao-no-sistema-cantareira-mas-cinco-regioes-da-grande-sp-ainda-tem-abastecimento-de-agua-afetado.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/22/video-pms-quebram-janela-de-casa-e-resgatam-idosa-e-cachorra-durante-incendio-na-grande-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/22/previsao-do-tempo-hoje-para-sao-paulo-sp-ceu-nublado-com-possibilidade-de-garoa-de-manha-a-tarde-o-sol-aparece-pancadas-de-chuva-a-tarde-e-a-noite.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/22/previsao-do-tempo-hoje-para-sao-bernardo-do-campo-sp-sol-com-muitas-nuvens-durante-o-dia-e-periodos-de-ceu-nublado-a-noite-chove-forte.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/22/previsao-do-tempo-hoje-para-santo-andre-sp-sol-com-muitas-nuvens-e-pancadas-de-chuva-a-tarde-a-noite-ocorre-temporal.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/22/previsao-do-tempo-hoje-para-osasco-sp-sol-com-muitas-nuvens-e-periodos-de-ceu-nublado-noite-com-pancadas-de-chuva.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/22/previsao-do-tempo-hoje-para-guarulhos-sp-sol-com-muitas-nuvens-durante-o-dia-e-periodos-de-ceu-nublado-a-noite-chove-forte.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/21/familia-denuncia-suspeita-de-agressao-contra-idoso-em-clinica-particular-apos-encontrar-ferimentos-pelo-corpo-vitima-foi-internada.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/pe/pernambuco/noticia/2026/11/21/cadela-com-cancer-impedida-de-viajar-consegue-embarcar-tratamento.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/21/funcionarios-de-mercado-seguem-atriz-na-rua-e-a-acusam-de-furto-no-dia-da-consciencia-negra-em-sp-parecia-um-assalto-me-senti-muito-agredida.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/21/em-uma-semana-ao-menos-10-corpos-sao-encontrados-pela-policia-na-capital-e-grande-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/21/trabalhadores-enfrentam-fila-quilometrica-para-deixar-de-pagar-contribuicao-assistencial-na-liberdade-no-centro-de-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/21/video-mostra-momento-em-que-engenheiro-perde-controle-do-skate-e-e-atropelado-por-onibus-em-sp-vitima-morreu-no-local.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/21/morador-de-80-anos-e-preso-suspeito-por-abusar-de-criancas-em-piscina-de-condominio-na-zona-leste-de-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/21/motorista-embriagado-e-preso-apos-bater-em-quatro-carros-em-sao-bernardo-do-campo.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/carnaval/2027/noticia/2026/11/21/gravida-de-oito-meses-sabrina-sato-cai-no-samba-com-barrigao-em-ensaio-da-gavioes-da-fiel.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/21/idosa-de-78-anos-e-marido-de-81-sao-feitos-refens-durante-roubo-em-predio-em-sp-ladroes-levaram-mais-de-r-500-mil-em-dinheiro-e-joias.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/21/o-que-se-sabe-e-o-que-falta-saber-sobre-o-advogado-preso-suspeito-de-torturar-atriz-em-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/21/predio-do-antigo-hotel-maksoud-plaza-primeiro-cinco-estrelas-de-sp-tem-projeto-de-condominio-com-550-unidades.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/21/incendio-sacoma-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/21/previsao-do-tempo-hoje-para-sao-paulo-sp-sol-com-muitas-nuvens-pancadas-de-chuva-a-tarde-e-a-noite.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/21/previsao-do-tempo-hoje-para-sao-bernardo-do-campo-sp-sol-com-algumas-nuvens-chove-rapido-durante-o-dia-e-a-noite.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/21/previsao-do-tempo-hoje-para-santo-andre-sp-sol-com-algumas-nuvens-chove-rapido-durante-o-dia-e-a-noite.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/21/previsao-do-tempo-hoje-para-osasco-sp-sol-o-dia-todo-muitas-nuvens-e-pancadas-de-chuva-de-manha-e-a-noite.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/previsao-do-tempo/noticia/2026/11/21/previsao-do-tempo-hoje-para-guarulhos-sp-sol-com-algumas-nuvens-chove-rapido-durante-o-dia-e-a-noite.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/20/medica-encontrada-morta-hospital-zona-leste-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/20/homem-de-27-anos-morre-apos-perder-controle-de-skate-e-bater-em-onibus-na-zona-oeste-de-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/20/chuva-sp-estado-de-atencao-alagamentos.ghtml": {
+  "flood": true,
+  "alert": false,
+  "note": "estado de atenção (aviso) e publicado há mais de 72 h"
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/20/mercadinhos-em-condominios-de-sp-registram-furtos-frequentes-policia-investiga-casos-e-moradores-sao-processados.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/20/sabesp-faz-manutencao-que-pode-afetar-o-abastecimento-de-agua-de-9-milhoes-de-pessoas-na-grande-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/20/justica-manda-soltar-lutador-de-mma-preso-por-matar-o-proprio-cachorro-a-facadas-em-sp.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/20/ex-bbb-ana-carolina-madeira-tem-celular-roubado-em-sp-e-ladrao-faz-emprestimo-em-seu-nome.ghtml": {
+  "flood": false,
+  "alert": false
+ },
+ "https://osasco.sp.gov.br/osasco-realiza-sexta-dia-27-acao-de-empregabilidade-com-300-vagas/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://osasco.sp.gov.br/assistencia-social-entrega-certificacao-a-novos-alunos-do-curso-libras-para-todos/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://osasco.sp.gov.br/piloto-de-osasco-e-vice-campeao-da-copa-potenza-de-motovelocidade/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://osasco.sp.gov.br/emef-professora-terezinha-martins-pereira-celebra-jubileu-de-ouro/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://osasco.sp.gov.br/osasquense-e-bicampeao-no-pan-americano-de-powerlifting-2026/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://osasco.sp.gov.br/osasco-celebra-xxii-novembro-negro-com-palestra-e-lancamento-de-livro/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://osasco.sp.gov.br/osasco-segue-com-limpeza-e-desassoreamento-de-corregos/": {
+  "flood": true,
+  "alert": false,
+  "note": "prevenção (limpeza de córregos em Osasco)"
+ },
+ "https://osasco.sp.gov.br/prefeitura-inaugura-natal-magico-de-osasco-no-sabado-28-11-e-promove-show-de-simone-mendes-no-domingo-29-11/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://osasco.sp.gov.br/prefeitura-de-osasco-revitaliza-sala-de-leitura-do-ceu-bonanca/": {
+  "flood": false,
+  "alert": false
+ },
+ "https://osasco.sp.gov.br/confira-o-que-abre-e-fecha-no-feriado-do-dia-da-consciencia-negra-em-osasco/": {
+  "flood": false,
+  "alert": false
+ }
+}

@@ -1,0 +1,53 @@
+{
+  "name": "alertacidade",
+  "version": "2.0.0",
+  "private": true,
+  "description": "AlertaCidade — Plataforma colaborativa de monitoramento de alagamentos urbanos (APS UNIP — Sistemas Distribuídos)",
+  "workspaces": [
+    "packages/design-tokens",
+    "packages/shared-types",
+    "apps/api",
+    "apps/notification-worker",
+    "apps/news-worker",
+    "apps/admin"
+  ],
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "infra:up": "docker compose up -d --wait",
+    "infra:down": "docker compose down",
+    "infra:reset": "docker compose down -v",
+    "tokens:build": "npm run build -w @alertacidade/design-tokens",
+    "types:build": "npm run build -w @alertacidade/shared-types",
+    "packages:build": "npm run tokens:build && npm run types:build",
+    "db:generate": "npm run db:generate -w @alertacidade/api",
+    "db:migrate": "npm run db:migrate -w @alertacidade/api",
+    "db:seed": "npm run db:seed -w @alertacidade/api",
+    "db:check-drift": "npm run db:check-drift -w @alertacidade/api",
+    "api:dev": "npm run start:dev -w @alertacidade/api",
+    "worker:dev": "npm run dev -w @alertacidade/notification-worker",
+    "admin:dev": "npm run dev -w @alertacidade/admin",
+    "admin:preview": "npm run build -w @alertacidade/admin && npm run preview -w @alertacidade/admin",
+    "build": "npm run packages:build && npm run build -w @alertacidade/api && npm run build -w @alertacidade/notification-worker && npm run build -w @alertacidade/news-worker && npm run build -w @alertacidade/admin",
+    "test:unit": "npm run packages:build && npm test -w @alertacidade/design-tokens && npm run test:unit -w @alertacidade/api && npm run test:unit -w @alertacidade/notification-worker && npm run test:unit -w @alertacidade/news-worker && npm run test -w @alertacidade/admin",
+    "test:int": "npm run test:int -w @alertacidade/api && npm run test:int -w @alertacidade/notification-worker && npm run test:int -w @alertacidade/news-worker",
+    "test": "npm run test:unit && npm run test:int",
+    "mobile:test": "cd apps/mobile && flutter analyze && flutter test",
+    "mobile:run": "cd apps/mobile && flutter run",
+    "admin:test": "npm run test -w @alertacidade/admin",
+    "news:eval": "npm run eval -w @alertacidade/news-worker",
+    "news:seed-sources": "npm run seed-sources -w @alertacidade/news-worker",
+    "news:collect-once": "npm run collect-once -w @alertacidade/news-worker",
+    "news:build-events": "npm run build-events -w @alertacidade/news-worker",
+    "news:dev": "npm run dev -w @alertacidade/news-worker",
+    "news:reprocess-failed": "npm run reprocess-failed -w @alertacidade/news-worker",
+    "news:collect-now": "npm run collect-now -w @alertacidade/news-worker --",
+    "news:e2e": "npm run e2e-chain -w @alertacidade/news-worker --",
+    "news:snapshot": "npm run snapshot-feeds -w @alertacidade/news-worker --",
+    "news:eval-real": "npm run eval-real -w @alertacidade/news-worker --"
+  },
+  "optionalDependencies": {
+    "@esbuild/win32-x64": "0.28.2"
+  }
+}

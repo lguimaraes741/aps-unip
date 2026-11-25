@@ -1,0 +1,825 @@
+// =============================================================================
+// AlertaCidade — modelo de dados (PostgreSQL 17 + PostGIS 3.5)
+//
+// Convenções:
+//  - UUID v4 gerado pelo banco (gen_random_uuid) em todas as entidades.
+//  - Tabelas/colunas em snake_case via @@map/@map.
+//  - Datas em timestamptz (instante UTC); a apresentação converte para o fuso local.
+//  - Colunas geography(Point,4326) são preenchidas por TRIGGER a partir de
+//    latitude/longitude (ver migration) — a aplicação nunca escreve nelas.
+//  - Regras que o Prisma não expressa (CHECKs, triggers) estão na migration SQL;
+//    `npm run db:check-drift` garante que schema e migrations continuam iguais.
+// =============================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+// ----------------------------------------------------------------------------
+// Enums
+// ----------------------------------------------------------------------------
+
+enum UserRole {
+  CITIZEN
+  MODERATOR
+  ADMIN
+
+  @@map("user_role")
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+  DELETED
+
+  @@map("user_status")
+}
+
+enum Severity {
+  LOW
+  MODERATE
+  HIGH
+  CRITICAL
+
+  @@map("severity")
+}
+
+enum OccurrenceStatus {
+  PENDING
+  UNDER_REVIEW
+  VALIDATED
+  REJECTED
+  RESOLVED
+
+  @@map("occurrence_status")
+}
+
+enum ConfirmationType {
+  CONFIRM
+  CONTEST
+
+  @@map("confirmation_type")
+}
+
+enum NotificationType {
+  OCCURRENCE_NEARBY
+  OCCURRENCE_STATUS_CHANGED
+  NEWS_ALERT
+  NEWS_ALERT_UPDATE
+  /// Só MODERATOR/ADMIN: notícia urgente aguardando moderação.
+  NEWS_REVIEW_URGENT
+
+  @@map("notification_type")
+}
+
+enum DeliveryStatus {
+  PENDING
+  SENT
+  FAILED
+  SKIPPED
+
+  @@map("delivery_status")
+}
+
+enum ReportStatus {
+  OPEN
+  REVIEWED
+  DISMISSED
+
+  @@map("report_status")
+}
+
+enum DevicePlatform {
+  ANDROID
+  IOS
+  WEB
+
+  @@map("device_platform")
+}
+
+// ----------------------------------------------------------------------------
+// Identidade e acesso
+// ----------------------------------------------------------------------------
+
+model User {
+  id           String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name         String     @db.VarChar(120)
+  email        String     @unique @db.Citext
+  passwordHash String     @map("password_hash") @db.VarChar(255)
+  role         UserRole   @default(CITIZEN)
+  status       UserStatus @default(ACTIVE)
+  avatarUrl    String?    @map("avatar_url") @db.VarChar(500)
+  lastLoginAt  DateTime?  @map("last_login_at") @db.Timestamptz(3)
+  createdAt    DateTime   @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt    DateTime   @updatedAt @map("updated_at") @db.Timestamptz(3)
+  /// Exclusão lógica + anonimização (LGPD). Os dados pessoais são apagados; o id permanece para integridade.
+  deletedAt    DateTime?  @map("deleted_at") @db.Timestamptz(3)
+
+  occurrences              Occurrence[]              @relation("OccurrenceCreatedBy")
+  moderatedOccurrences     Occurrence[]              @relation("OccurrenceModeratedBy")
+  photos                   OccurrencePhoto[]
+  confirmations            Confirmation[]
+  statusChanges            OccurrenceStatusHistory[]
+  savedOccurrences         SavedOccurrence[]
+  contentReports           ContentReport[]
+  notificationPreference   NotificationPreference?
+  deviceTokens             DeviceToken[]
+  notifications            Notification[]
+  auditLogs                AuditLog[]
+  refreshTokens            RefreshToken[]
+  passwordResetTokens      PasswordResetToken[]
+  newsEventsModerated      NewsEvent[]               @relation("NewsEventModeratedBy")
+  newsAlertsReviewed       NewsAlert[]               @relation("NewsAlertReviewedBy")
+  newsCollectionsRequested NewsCollectionJob[]       @relation("NewsCollectionRequestedBy")
+
+  @@index([role, status])
+  @@map("users")
+}
+
+/// Refresh tokens rotativos. Apenas o hash SHA-256 é armazenado.
+/// `familyId` permite revogar toda a cadeia se um token antigo for reutilizado.
+model RefreshToken {
+  id        String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId    String    @map("user_id") @db.Uuid
+  tokenHash String    @unique @map("token_hash") @db.VarChar(128)
+  familyId  String    @map("family_id") @db.Uuid
+  userAgent String?   @map("user_agent") @db.VarChar(255)
+  expiresAt DateTime  @map("expires_at") @db.Timestamptz(3)
+  revokedAt DateTime? @map("revoked_at") @db.Timestamptz(3)
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([familyId])
+  @@map("refresh_tokens")
+}
+
+model PasswordResetToken {
+  id        String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId    String    @map("user_id") @db.Uuid
+  codeHash  String    @map("code_hash") @db.VarChar(255)
+  attempts  Int       @default(0)
+  expiresAt DateTime  @map("expires_at") @db.Timestamptz(3)
+  usedAt    DateTime? @map("used_at") @db.Timestamptz(3)
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@map("password_reset_tokens")
+}
+
+// ----------------------------------------------------------------------------
+// Ocorrências
+// ----------------------------------------------------------------------------
+
+model Occurrence {
+  id              String                                 @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  /// Número legível exibido ao usuário e no painel (ex.: #1042).
+  code            Int                                    @unique @default(autoincrement())
+  title           String                                 @db.VarChar(120)
+  description     String                                 @db.Text
+  address         String                                 @db.VarChar(255)
+  neighborhood    String?                                @db.VarChar(120)
+  latitude        Float                                  @db.DoublePrecision
+  longitude       Float                                  @db.DoublePrecision
+  /// Preenchida por trigger a partir de latitude/longitude. Nunca escrever pela aplicação.
+  location        Unsupported("geography(Point, 4326)")?
+  severity        Severity
+  status          OccurrenceStatus                       @default(PENDING)
+  /// Momento em que o alagamento foi observado (informado pelo cidadão).
+  occurredAt      DateTime                               @map("occurred_at") @db.Timestamptz(3)
+  /// Contadores desnormalizados, mantidos na mesma transação das confirmações.
+  confirmCount    Int                                    @default(0) @map("confirm_count")
+  contestCount    Int                                    @default(0) @map("contest_count")
+  /// Controle de concorrência otimista (moderação simultânea).
+  version         Int                                    @default(1)
+  /// Registro criado pelo seed de demonstração — exibido com selo "Demonstração".
+  isDemo          Boolean                                @default(false) @map("is_demo")
+  createdById     String                                 @map("created_by_id") @db.Uuid
+  /// Chave de idempotência gerada pelo app: reenvios após falha de rede não duplicam o registro.
+  clientRequestId String?                                @map("client_request_id") @db.Uuid
+  moderatedById   String?                                @map("moderated_by_id") @db.Uuid
+  moderationNote  String?                                @map("moderation_note") @db.VarChar(500)
+  validatedAt     DateTime?                              @map("validated_at") @db.Timestamptz(3)
+  resolvedAt      DateTime?                              @map("resolved_at") @db.Timestamptz(3)
+  createdAt       DateTime                               @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt       DateTime                               @updatedAt @map("updated_at") @db.Timestamptz(3)
+  deletedAt       DateTime?                              @map("deleted_at") @db.Timestamptz(3)
+
+  createdBy     User                      @relation("OccurrenceCreatedBy", fields: [createdById], references: [id], onDelete: Restrict)
+  moderatedBy   User?                     @relation("OccurrenceModeratedBy", fields: [moderatedById], references: [id], onDelete: SetNull)
+  photos        OccurrencePhoto[]
+  confirmations Confirmation[]
+  history       OccurrenceStatusHistory[]
+  savedBy       SavedOccurrence[]
+  reports       ContentReport[]
+  notifications Notification[]
+  newsEvents    NewsEvent[]
+
+  @@unique([createdById, clientRequestId])
+  @@index([location], type: Gist)
+  @@index([status, createdAt])
+  @@index([severity, status])
+  @@index([createdById, createdAt])
+  @@index([neighborhood])
+  @@index([createdAt])
+  @@map("occurrences")
+}
+
+model OccurrencePhoto {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  occurrenceId String   @map("occurrence_id") @db.Uuid
+  uploadedById String   @map("uploaded_by_id") @db.Uuid
+  /// Chave no armazenamento de objetos (disco local em dev). Nunca o caminho original do cliente.
+  storageKey   String   @unique @map("storage_key") @db.VarChar(255)
+  mimeType     String   @map("mime_type") @db.VarChar(30)
+  sizeBytes    Int      @map("size_bytes")
+  width        Int?
+  height       Int?
+  position     Int      @default(0)
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  occurrence Occurrence @relation(fields: [occurrenceId], references: [id], onDelete: Cascade)
+  uploadedBy User       @relation(fields: [uploadedById], references: [id], onDelete: Restrict)
+
+  @@index([occurrenceId, position])
+  @@map("occurrence_photos")
+}
+
+/// Uma única manifestação (confirmar OU contestar) por usuário por ocorrência — garantida por UNIQUE.
+model Confirmation {
+  id           String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  occurrenceId String           @map("occurrence_id") @db.Uuid
+  userId       String           @map("user_id") @db.Uuid
+  type         ConfirmationType
+  createdAt    DateTime         @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt    DateTime         @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  occurrence Occurrence @relation(fields: [occurrenceId], references: [id], onDelete: Cascade)
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([occurrenceId, userId])
+  @@index([userId])
+  @@map("confirmations")
+}
+
+/// Linha do tempo da ocorrência (tela de detalhes) e trilha de moderação.
+model OccurrenceStatusHistory {
+  id           String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  occurrenceId String            @map("occurrence_id") @db.Uuid
+  fromStatus   OccurrenceStatus? @map("from_status")
+  toStatus     OccurrenceStatus  @map("to_status")
+  actorId      String?           @map("actor_id") @db.Uuid
+  note         String?           @db.VarChar(500)
+  createdAt    DateTime          @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  occurrence Occurrence @relation(fields: [occurrenceId], references: [id], onDelete: Cascade)
+  actor      User?      @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([occurrenceId, createdAt])
+  @@map("occurrence_status_history")
+}
+
+model SavedOccurrence {
+  userId       String   @map("user_id") @db.Uuid
+  occurrenceId String   @map("occurrence_id") @db.Uuid
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  occurrence Occurrence @relation(fields: [occurrenceId], references: [id], onDelete: Cascade)
+
+  @@id([userId, occurrenceId])
+  @@map("saved_occurrences")
+}
+
+/// Denúncias de conteúdo inadequado.
+model ContentReport {
+  id           String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  occurrenceId String       @map("occurrence_id") @db.Uuid
+  reporterId   String       @map("reporter_id") @db.Uuid
+  reason       String       @db.VarChar(40)
+  details      String?      @db.VarChar(500)
+  status       ReportStatus @default(OPEN)
+  createdAt    DateTime     @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  occurrence Occurrence @relation(fields: [occurrenceId], references: [id], onDelete: Cascade)
+  reporter   User       @relation(fields: [reporterId], references: [id], onDelete: Cascade)
+
+  @@unique([occurrenceId, reporterId])
+  @@index([status, createdAt])
+  @@map("content_reports")
+}
+
+// ----------------------------------------------------------------------------
+// Notificações
+// ----------------------------------------------------------------------------
+
+/// Área de interesse escolhida pelo usuário (não é rastreamento contínuo de localização).
+model NotificationPreference {
+  userId       String                                 @id @map("user_id") @db.Uuid
+  pushEnabled  Boolean                                @default(true) @map("push_enabled")
+  radiusMeters Int                                    @default(2000) @map("radius_meters")
+  minSeverity  Severity                               @default(MODERATE) @map("min_severity")
+  latitude     Float?                                 @db.DoublePrecision
+  longitude    Float?                                 @db.DoublePrecision
+  location     Unsupported("geography(Point, 4326)")?
+  updatedAt    DateTime                               @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([location], type: Gist)
+  @@map("notification_preferences")
+}
+
+model DeviceToken {
+  id         String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId     String         @map("user_id") @db.Uuid
+  token      String         @unique @db.VarChar(512)
+  platform   DevicePlatform
+  createdAt  DateTime       @default(now()) @map("created_at") @db.Timestamptz(3)
+  lastSeenAt DateTime       @default(now()) @map("last_seen_at") @db.Timestamptz(3)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("device_tokens")
+}
+
+/// Caixa de entrada de alertas do usuário. (userId, sourceEventId) único => o mesmo evento
+/// nunca gera duas notificações para a mesma pessoa, mesmo se o worker reprocessar o job.
+model Notification {
+  id             String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId         String           @map("user_id") @db.Uuid
+  occurrenceId   String?          @map("occurrence_id") @db.Uuid
+  /// Alertas de notícia (Fase 7). Exclusivo com occurrenceId (CHECK na migration).
+  newsEventId    String?          @map("news_event_id") @db.Uuid
+  sourceEventId  String?          @map("source_event_id") @db.Uuid
+  type           NotificationType
+  title          String           @db.VarChar(120)
+  body           String           @db.VarChar(500)
+  /// Distância calculada no envio (metros). A localização do usuário não é copiada.
+  distanceMeters Int?             @map("distance_meters")
+  pushStatus     DeliveryStatus   @default(PENDING) @map("push_status")
+  pushAttempts   Int              @default(0) @map("push_attempts")
+  lastError      String?          @map("last_error") @db.VarChar(500)
+  readAt         DateTime?        @map("read_at") @db.Timestamptz(3)
+  createdAt      DateTime         @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  occurrence Occurrence? @relation(fields: [occurrenceId], references: [id], onDelete: Cascade)
+  newsEvent  NewsEvent?  @relation(fields: [newsEventId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, sourceEventId])
+  @@index([newsEventId])
+  @@index([userId, createdAt])
+  @@index([userId, readAt])
+  @@map("notifications")
+}
+
+// ----------------------------------------------------------------------------
+// Eventos distribuídos (Transactional Outbox) e idempotência
+// ----------------------------------------------------------------------------
+
+/// Outbox: o evento é gravado NA MESMA transação da alteração de negócio.
+/// Um publicador o envia depois ao Redis/BullMQ e ao Socket.IO, marcando publishedAt.
+/// `sequence` é monotônico e serve de cursor de sincronização para clientes que reconectam.
+model DomainEvent {
+  id                String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  sequence          BigInt    @unique @default(autoincrement())
+  type              String    @db.VarChar(60)
+  aggregateType     String    @map("aggregate_type") @db.VarChar(40)
+  aggregateId       String    @map("aggregate_id") @db.Uuid
+  payload           Json
+  occurredAt        DateTime  @default(now()) @map("occurred_at") @db.Timestamptz(3)
+  publishedAt       DateTime? @map("published_at") @db.Timestamptz(3)
+  /// Cursor de entrega: atribuído pelo publicador na ordem de publicação (ver migration
+  /// 20261123200000_outbox_delivery_cursor). É o `sequence` enviado aos clientes.
+  publishedSequence BigInt?   @unique @map("published_sequence")
+  attempts          Int       @default(0)
+  lastError         String?   @map("last_error") @db.VarChar(500)
+
+  @@index([publishedAt, sequence])
+  @@index([aggregateType, aggregateId])
+  @@map("domain_events")
+}
+
+/// Registro de mensagens já processadas por cada consumidor (entrega "pelo menos uma vez" + dedup).
+model ProcessedMessage {
+  consumer    String   @db.VarChar(60)
+  messageId   String   @map("message_id") @db.Uuid
+  processedAt DateTime @default(now()) @map("processed_at") @db.Timestamptz(3)
+
+  @@id([consumer, messageId])
+  @@map("processed_messages")
+}
+
+// ----------------------------------------------------------------------------
+// Auditoria
+// ----------------------------------------------------------------------------
+
+model AuditLog {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  actorId    String?  @map("actor_id") @db.Uuid
+  action     String   @db.VarChar(60)
+  entityType String   @map("entity_type") @db.VarChar(40)
+  entityId   String?  @map("entity_id") @db.VarChar(64)
+  before     Json?
+  after      Json?
+  ipAddress  String?  @map("ip_address") @db.VarChar(45)
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  actor User? @relation(fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([entityType, entityId])
+  @@index([actorId, createdAt])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+// ----------------------------------------------------------------------------
+// News Intelligence (Fase 7) — docs/architecture/07-news-intelligence.md
+// Notícias são DADO NÃO CONFIÁVEL: guardamos só título, URL, datas, autor e o resumo
+// publicado pelo próprio feed (≤ 500). Coordenadas nunca são inventadas: ponto só com
+// precisão de logradouro; abrangência de cidade/distrito vem da geometria de news_regions.
+// ----------------------------------------------------------------------------
+
+enum NewsSourceType {
+  RSS
+  GDELT
+  API
+
+  @@map("news_source_type")
+}
+
+enum NewsSourceReliability {
+  OFFICIAL
+  ESTABLISHED_PRESS
+  AGGREGATOR
+  UNKNOWN
+
+  @@map("news_source_reliability")
+}
+
+enum NewsArticleStatus {
+  COLLECTED
+  ANALYZING
+  ANALYZED
+  IRRELEVANT
+  DUPLICATE
+  FAILED
+
+  @@map("news_article_status")
+}
+
+enum NewsTemporality {
+  CURRENT
+  FORECAST
+  PREVENTION
+  HISTORICAL
+  RESOLVED
+  UNCERTAIN
+
+  @@map("news_temporality")
+}
+
+enum NewsConfidence {
+  LOW
+  MEDIUM
+  HIGH
+
+  @@map("news_confidence")
+}
+
+enum NewsEventType {
+  FLOODING
+  RIVER_OVERFLOW
+  FLASH_FLOOD
+
+  @@map("news_event_type")
+}
+
+enum NewsEventStatus {
+  AWAITING_VALIDATION
+  PUBLISHED_PRELIMINARY
+  PUBLISHED_VERIFIED
+  DISCARDED
+  OUTDATED
+  RESOLVED
+
+  @@map("news_event_status")
+}
+
+enum LocationPrecision {
+  EXACT
+  STREET
+  NEIGHBORHOOD
+  CITY
+  REGION
+  UNKNOWN
+
+  @@map("location_precision")
+}
+
+enum NewsRegionKind {
+  STATE
+  METRO
+  CITY
+  DISTRICT
+  NEIGHBORHOOD
+
+  @@map("news_region_kind")
+}
+
+enum NewsAlertLevel {
+  PRELIMINARY
+  VERIFIED
+  OFFICIAL
+
+  @@map("news_alert_level")
+}
+
+enum NewsAlertStatus {
+  ACTIVE
+  RETRACTED
+  RESOLVED
+  EXPIRED
+
+  @@map("news_alert_status")
+}
+
+enum NewsCollectionStatus {
+  RUNNING
+  SUCCEEDED
+  FAILED
+  SKIPPED
+
+  @@map("news_collection_status")
+}
+
+enum NewsCollectionTrigger {
+  SCHEDULE
+  MANUAL
+  RETRY
+
+  @@map("news_collection_trigger")
+}
+
+enum NewsLinkOrigin {
+  AUTO
+  MODERATOR
+
+  @@map("news_link_origin")
+}
+
+/// Fonte monitorada. Nasce DESLIGADA: só é ligada depois de conferidos os termos de uso (terms_checked_at).
+model NewsSource {
+  id                         String                @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  /// Identificador estável usado na configuração e nos logs (ex.: "gdelt-grande-sp").
+  key                        String                @unique @db.VarChar(60)
+  name                       String                @db.VarChar(120)
+  type                       NewsSourceType
+  reliability                NewsSourceReliability
+  baseUrl                    String                @map("base_url") @db.VarChar(500)
+  feedUrl                    String                @map("feed_url") @db.VarChar(1000)
+  enabled                    Boolean               @default(false)
+  collectionIntervalSec      Int                   @default(900) @map("collection_interval_sec")
+  minRequestIntervalMs       Int                   @default(2000) @map("min_request_interval_ms")
+  /// Cidade padrão da fonte (código IBGE), ajuda a desambiguar distritos.
+  defaultCityIbge            String?               @map("default_city_ibge") @db.VarChar(7)
+  /// Parâmetros específicos do conector (ex.: consulta do GDELT).
+  config                     Json                  @default("{}")
+  termsCheckedAt             DateTime?             @map("terms_checked_at") @db.Timestamptz(3)
+  termsNote                  String?               @map("terms_note") @db.VarChar(500)
+  lastAttemptAt              DateTime?             @map("last_attempt_at") @db.Timestamptz(3)
+  lastSuccessfulCollectionAt DateTime?             @map("last_successful_collection_at") @db.Timestamptz(3)
+  consecutiveFailures        Int                   @default(0) @map("consecutive_failures")
+  /// Backoff por fonte: não coletar antes deste instante.
+  nextAttemptAt              DateTime?             @map("next_attempt_at") @db.Timestamptz(3)
+  createdAt                  DateTime              @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt                  DateTime              @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  articles       NewsArticle[]
+  collectionJobs NewsCollectionJob[]
+
+  @@index([enabled, nextAttemptAt])
+  @@map("news_sources")
+}
+
+model NewsCollectionJob {
+  id            String                @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  sourceId      String                @map("source_id") @db.Uuid
+  status        NewsCollectionStatus  @default(RUNNING)
+  trigger       NewsCollectionTrigger
+  requestedById String?               @map("requested_by_id") @db.Uuid
+  startedAt     DateTime              @default(now()) @map("started_at") @db.Timestamptz(3)
+  finishedAt    DateTime?             @map("finished_at") @db.Timestamptz(3)
+  durationMs    Int?                  @map("duration_ms")
+  httpStatus    Int?                  @map("http_status")
+  itemsFound    Int                   @default(0) @map("items_found")
+  itemsNew      Int                   @default(0) @map("items_new")
+  errorMessage  String?               @map("error_message") @db.VarChar(500)
+
+  source      NewsSource    @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  requestedBy User?         @relation("NewsCollectionRequestedBy", fields: [requestedById], references: [id], onDelete: SetNull)
+  articles    NewsArticle[]
+
+  @@index([sourceId, startedAt])
+  @@index([status, startedAt])
+  @@map("news_collection_jobs")
+}
+
+model NewsArticle {
+  id               String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  sourceId         String            @map("source_id") @db.Uuid
+  collectionJobId  String?           @map("collection_job_id") @db.Uuid
+  externalId       String?           @map("external_id") @db.VarChar(500)
+  title            String            @db.VarChar(500)
+  url              String            @db.VarChar(2000)
+  canonicalUrl     String            @map("canonical_url") @db.VarChar(2000)
+  /// SHA-256 da URL canônica: a mesma notícia nunca é gravada duas vezes (recoleta idempotente).
+  urlHash          String            @unique @map("url_hash") @db.Char(64)
+  titleFingerprint String            @map("title_fingerprint") @db.VarChar(500)
+  publishedAt      DateTime?         @map("published_at") @db.Timestamptz(3)
+  collectedAt      DateTime          @default(now()) @map("collected_at") @db.Timestamptz(3)
+  /// Resumo publicado pela própria fonte no feed (nunca o artigo completo).
+  summary          String?           @db.VarChar(500)
+  author           String?           @db.VarChar(200)
+  language         String            @default("pt") @db.VarChar(10)
+  processingStatus NewsArticleStatus @default(COLLECTED) @map("processing_status")
+  attempts         Int               @default(0)
+  lastError        String?           @map("last_error") @db.VarChar(500)
+  duplicateOfId    String?           @map("duplicate_of_id") @db.Uuid
+  updatedAt        DateTime          @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  source        NewsSource         @relation(fields: [sourceId], references: [id], onDelete: Cascade)
+  collectionJob NewsCollectionJob? @relation(fields: [collectionJobId], references: [id], onDelete: SetNull)
+  duplicateOf   NewsArticle?       @relation("NewsArticleDuplicate", fields: [duplicateOfId], references: [id], onDelete: SetNull)
+  duplicates    NewsArticle[]      @relation("NewsArticleDuplicate")
+  analyses      NewsAnalysis[]
+  eventLink     NewsEventArticle?  @relation("NewsEventArticleArticle")
+  derivedLinks  NewsEventArticle[] @relation("NewsEventArticleDerivedFrom")
+
+  @@unique([sourceId, externalId])
+  @@index([processingStatus, collectedAt])
+  @@index([publishedAt])
+  @@index([titleFingerprint])
+  @@map("news_articles")
+}
+
+/// Resultado de uma análise. Reprocessar com regras novas cria outra linha (versões comparáveis).
+model NewsAnalysis {
+  id                String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  articleId         String            @map("article_id") @db.Uuid
+  rulesVersion      String            @map("rules_version") @db.VarChar(20)
+  /// "none" = só regras determinísticas (nenhum modelo de linguagem usado).
+  modelVersion      String            @default("none") @map("model_version") @db.VarChar(60)
+  isRelevant        Boolean           @map("is_relevant")
+  temporality       NewsTemporality?
+  eventType         NewsEventType?    @map("event_type")
+  /// Nula = a fonte não descreve impacto ("não informada" — nunca é tratada como baixa).
+  estimatedSeverity Severity?         @map("estimated_severity")
+  confidence        NewsConfidence?
+  locationPrecision LocationPrecision @default(UNKNOWN) @map("location_precision")
+  needsReview       Boolean           @default(false) @map("needs_review")
+  /// Locais, consequências, evidências textuais (trechos literais) e informações ausentes.
+  extractedData     Json              @map("extracted_data")
+  reasoningSummary  String            @map("reasoning_summary") @db.VarChar(1000)
+  analyzedAt        DateTime          @default(now()) @map("analyzed_at") @db.Timestamptz(3)
+
+  article NewsArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@unique([articleId, rulesVersion, modelVersion])
+  @@index([analyzedAt])
+  @@map("news_analyses")
+}
+
+/// Gazetteer (nomes e códigos do IBGE). A geometria vem das malhas do IBGE — nunca desenhada à mão.
+model NewsRegion {
+  id        String                                        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  kind      NewsRegionKind
+  name      String                                        @db.VarChar(120)
+  state     String                                        @db.Char(2)
+  ibgeCode  String?                                       @unique @map("ibge_code") @db.VarChar(12)
+  parentId  String?                                       @map("parent_id") @db.Uuid
+  aliases   String[]                                      @default([])
+  boundary  Unsupported("geography(MultiPolygon, 4326)")?
+  monitored Boolean                                       @default(false)
+  createdAt DateTime                                      @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime                                      @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  parent   NewsRegion?  @relation("NewsRegionParent", fields: [parentId], references: [id], onDelete: SetNull)
+  children NewsRegion[] @relation("NewsRegionParent")
+  events   NewsEvent[]
+
+  @@unique([kind, state, name])
+  @@index([boundary], type: Gist)
+  @@map("news_regions")
+}
+
+/// Ocorrência inferida de uma ou mais notícias. Gravidade = impacto relatado; confiança = qualidade da evidência.
+model NewsEvent {
+  id                  String                                 @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  /// Número legível no painel (ex.: N-12).
+  code                Int                                    @unique @default(autoincrement())
+  eventType           NewsEventType                          @map("event_type")
+  status              NewsEventStatus                        @default(AWAITING_VALIDATION)
+  title               String                                 @db.VarChar(200)
+  regionId            String?                                @map("region_id") @db.Uuid
+  city                String?                                @db.VarChar(120)
+  state               String?                                @db.Char(2)
+  /// Chaves de agrupamento (docs/architecture/07-news-intelligence.md, 7.8): cidades e distritos
+  /// (códigos IBGE) e logradouros citados pelas fontes do evento.
+  cityIbges           String[]                               @default([]) @map("city_ibges") @db.VarChar(7)
+  districtIbges       String[]                               @default([]) @map("district_ibges") @db.VarChar(12)
+  places              String[]                               @default([])
+  /// Logradouros/marcos citados (texto da fonte), ainda que sem coordenadas.
+  placeText           String?                                @map("place_text") @db.VarChar(255)
+  locationPrecision   LocationPrecision                      @map("location_precision")
+  /// Só preenchidos com precisão EXACT/STREET (CHECK na migration).
+  latitude            Float?                                 @db.DoublePrecision
+  longitude           Float?                                 @db.DoublePrecision
+  location            Unsupported("geography(Point, 4326)")?
+  estimatedSeverity   Severity?                              @map("estimated_severity")
+  confidence          NewsConfidence
+  independentSources  Int                                    @default(1) @map("independent_sources")
+  urgentReview        Boolean                                @default(false) @map("urgent_review")
+  /// Motivos da decisão automática (política versionada).
+  decisionReasons     String[]                               @default([]) @map("decision_reasons")
+  rulesVersion        String                                 @map("rules_version") @db.VarChar(20)
+  eventOccurredAt     DateTime?                              @map("event_occurred_at") @db.Timestamptz(3)
+  firstEvidenceAt     DateTime                               @map("first_evidence_at") @db.Timestamptz(3)
+  lastEvidenceAt      DateTime                               @map("last_evidence_at") @db.Timestamptz(3)
+  relatedOccurrenceId String?                                @map("related_occurrence_id") @db.Uuid
+  moderatedById       String?                                @map("moderated_by_id") @db.Uuid
+  moderationNote      String?                                @map("moderation_note") @db.VarChar(500)
+  /// Controle de concorrência otimista (moderação simultânea), como em occurrences.
+  version             Int                                    @default(1)
+  createdAt           DateTime                               @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt           DateTime                               @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  region            NewsRegion?        @relation(fields: [regionId], references: [id], onDelete: SetNull)
+  relatedOccurrence Occurrence?        @relation(fields: [relatedOccurrenceId], references: [id], onDelete: SetNull)
+  moderatedBy       User?              @relation("NewsEventModeratedBy", fields: [moderatedById], references: [id], onDelete: SetNull)
+  articles          NewsEventArticle[]
+  alert             NewsAlert?
+  notifications     Notification[]
+
+  @@index([status, lastEvidenceAt])
+  @@index([regionId, lastEvidenceAt])
+  @@index([cityIbges], type: Gin)
+  @@index([location], type: Gist)
+  @@map("news_events")
+}
+
+/// Fontes de um evento. Um artigo pertence a no máximo um evento.
+model NewsEventArticle {
+  eventId              String         @map("event_id") @db.Uuid
+  articleId            String         @unique @map("article_id") @db.Uuid
+  /// false = republicação/mesma agência: não conta como confirmação independente.
+  isIndependent        Boolean        @map("is_independent")
+  derivedFromArticleId String?        @map("derived_from_article_id") @db.Uuid
+  similarity           Float?         @db.DoublePrecision
+  linkedBy             NewsLinkOrigin @default(AUTO) @map("linked_by")
+  createdAt            DateTime       @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  event       NewsEvent    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  article     NewsArticle  @relation("NewsEventArticleArticle", fields: [articleId], references: [id], onDelete: Cascade)
+  derivedFrom NewsArticle? @relation("NewsEventArticleDerivedFrom", fields: [derivedFromArticleId], references: [id], onDelete: SetNull)
+
+  @@id([eventId, articleId])
+  @@map("news_event_articles")
+}
+
+/// Decisão de publicação. Gravada com o evento de outbox na MESMA transação: nada é
+/// notificado antes de a decisão estar persistida.
+model NewsAlert {
+  id                String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  eventId           String          @unique @map("event_id") @db.Uuid
+  level             NewsAlertLevel
+  status            NewsAlertStatus @default(ACTIVE)
+  /// Gravidade com que o alerta está publicado agora (pode ter sido publicado sem push).
+  publishedSeverity Severity?       @map("published_severity")
+  /// Maior gravidade já notificada por push (evita repetir alerta sem mudança relevante).
+  notifiedSeverity  Severity?       @map("notified_severity")
+  lastNotifiedAt    DateTime?       @map("last_notified_at") @db.Timestamptz(3)
+  revision          Int             @default(1)
+  publishedAt       DateTime        @default(now()) @map("published_at") @db.Timestamptz(3)
+  expiresAt         DateTime        @map("expires_at") @db.Timestamptz(3)
+  reviewedById      String?         @map("reviewed_by_id") @db.Uuid
+  retractionReason  String?         @map("retraction_reason") @db.VarChar(500)
+  updatedAt         DateTime        @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  event      NewsEvent @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  reviewedBy User?     @relation("NewsAlertReviewedBy", fields: [reviewedById], references: [id], onDelete: SetNull)
+
+  @@index([status, expiresAt])
+  @@map("news_alerts")
+}

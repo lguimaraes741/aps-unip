@@ -1,0 +1,37 @@
+node_modules/
+dist/
+coverage/
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Uploads locais (Fase 2)
+storage/
+
+# Flutter (Fase 3)
+apps/mobile/.dart_tool/
+apps/mobile/build/
+apps/mobile/.flutter-plugins*
+apps/mobile/android/local.properties
+apps/mobile/android/app/google-services.json
+
+# Firebase / credenciais
+**/firebase-service-account*.json
+/apps/api/*.tsbuildinfo
+
+# Firebase: log da CLI, credenciais e configuração do app (não versionar)
+firebase-debug.log
+*firebase-adminsdk*.json
+firebase-sa.json
+
+# Anotações locais do assistente de programação (Claude Code): caminhos da máquina e da conta.
+# O uso de IA está declarado em docs/academic/uso-de-ia.md.
+CLAUDE.md
+.claude/

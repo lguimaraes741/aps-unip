@@ -1,0 +1,5 @@
+# Testes marcados como "live" falam com a API real (ver test/live/). Eles se pulam sozinhos
+# sem --dart-define=LIVE_TESTS=true, então `flutter test` comum continua isolado da rede.
+tags:
+  live:
+  screenshots:
