@@ -18,6 +18,7 @@ import '../../core/widgets/tones.dart';
 import '../../domain/models.dart';
 import '../auth/auth_pages.dart';
 import '../auth/validators.dart';
+import '../auth/server_settings_tile.dart';
 
 final notificationPreferencesProvider =
     FutureProvider.autoDispose<NotificationPreferences>((ref) => ref.read(usersRepositoryProvider).preferences());
@@ -161,6 +162,9 @@ class ProfilePage extends ConsumerWidget {
               style: AcTypeScale.caption.copyWith(color: AcColors.textSecondary),
             ),
           ),
+          // Também aqui (não só no login): quem já está logado quando o endereço do servidor muda
+          // não chega à tela de login. A sessão continua válida — o banco é o mesmo.
+          const ServerSettingsTile(),
         ],
       ),
     );

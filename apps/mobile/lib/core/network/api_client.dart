@@ -79,6 +79,12 @@ class ApiClient {
     }
   }
 
+  /// Aplica o endereço atual de [AppConfig] (o usuário trocou o servidor no aparelho).
+  void updateBaseUrl() {
+    dio.options.baseUrl = AppConfig.apiUrl;
+    _refreshDio.options.baseUrl = AppConfig.apiUrl;
+  }
+
   /// Executa a chamada convertendo falhas em [ApiException].
   Future<T> call<T>(Future<Response<dynamic>> Function(Dio dio) request, T Function(dynamic data) parse) async {
     try {

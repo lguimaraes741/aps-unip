@@ -27,7 +27,7 @@
     "db:check-drift": "npm run db:check-drift -w @alertacidade/api",
     "api:dev": "npm run start:dev -w @alertacidade/api",
     "api:prod": "npm run build -w @alertacidade/api && npm run start:prod -w @alertacidade/api",
-    "tunnel": "cloudflared tunnel --no-autoupdate --url http://localhost:3000",
+    "tunnel": "cloudflared tunnel --no-autoupdate --metrics 127.0.0.1:47123 --url http://localhost:3000",
     "worker:dev": "npm run dev -w @alertacidade/notification-worker",
     "admin:dev": "npm run dev -w @alertacidade/admin",
     "admin:preview": "npm run build -w @alertacidade/admin && npm run preview -w @alertacidade/admin",

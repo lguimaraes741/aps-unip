@@ -7,6 +7,7 @@ import '../../core/providers.dart';
 import '../../core/theme/app_tokens.g.dart';
 import '../../core/widgets/buttons.dart';
 import '../../core/widgets/common.dart';
+import 'server_settings_tile.dart';
 import 'validators.dart';
 
 // ---------------------------------------------------------------------------
@@ -328,6 +329,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
             TextButton(onPressed: () => context.pushReplacement('/register'), child: const Text('Cadastre-se')),
           ],
         ),
+        const SizedBox(height: AcSpacing.md),
+        const ServerSettingsTile(),
       ],
     );
   }

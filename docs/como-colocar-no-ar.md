@@ -3,8 +3,8 @@
 Guia para deixar o sistema acessível pela internet a partir do **seu PC**, com um endereço HTTPS gratuito do
 Cloudflare, e gerar o app para instalar em outros celulares Android.
 
-> **Quando refazer:** sempre que o PC reiniciar, o Claude Code/terminais forem fechados ou o túnel cair.
-> O endereço do túnel **muda a cada vez** — então o APK precisa ser **gerado e enviado de novo** (passo 4).
+> **Quando refazer:** sempre que o PC reiniciar, as janelas forem fechadas ou o túnel cair. O endereço do túnel
+> **muda a cada vez** — mas **não é preciso gerar outro APK**: cada pessoa troca o endereço no próprio app (passo 5).
 
 Use o **PowerShell** na pasta do projeto (`C:\Users\pichau\projetos\alertacidade`). No PowerShell, use `npm.cmd`
 (o `npm` sozinho é bloqueado pela política de execução).
@@ -37,18 +37,18 @@ O modo produção fecha o Swagger e não mostra códigos de recuperação de sen
 npm.cmd run tunnel
 ```
 
-Procure no texto uma linha com o endereço, por exemplo:
+Para ver o endereço, abra no navegador do PC <http://127.0.0.1:47123/quicktunnel> — aparece algo como
+`{"hostname":"palavras-aleatorias.trycloudflare.com"}`. O endereço é `https://` + esse `hostname`. (Ele também aparece
+no meio do texto da janela do túnel.)
 
-```
-https://andrea-observation-jan-newton.trycloudflare.com
-```
-
-Copie esse endereço e confira no navegador: `<endereço>/api/v1/health` deve responder `"status":"ok"`.
+Confira no navegador: `<endereço>/api/v1/health` deve responder `"status":"ok"`.
 
 > Se o comando `cloudflared` não for encontrado, feche e abra o terminal (o instalador adicionou ao PATH), ou use
 > `& "C:\Program Files (x86)\cloudflared\cloudflared.exe" tunnel --no-autoupdate --url http://localhost:3000`.
 
-## 4. Gerar o APK com o endereço do túnel
+## 4. Gerar o APK (só na primeira vez ou quando o app mudar)
+
+O APK atual já permite trocar o servidor pelo próprio app. Só gere outro se o **código do app** mudar.
 
 ```powershell
 cd apps\mobile
@@ -60,14 +60,24 @@ cd ..\..
 - Leva de 4 a 5 minutos. O arquivo fica em `C:\Users\pichau\Downloads\AlertaCidade.apk` (~62 MB).
 - Use o endereço **exato** do passo 3, com `https://` e sem barra no final.
 
-## 5. Instalar nos celulares (Android)
+## 5. O endereço mudou? Troque no app (sem novo APK)
+
+Envie o endereço novo ao grupo. Cada pessoa abre o app e:
+
+- **se não está logada:** na tela de login, toca em **"Servidor: …"** (abaixo de "Cadastre-se");
+- **se está logada:** vai em **Perfil** e toca em **"Servidor: …"** (no fim da tela).
+
+Cola o endereço (`https://….trycloudflare.com`) e toca em **Testar e salvar**. O app confere se o servidor responde
+antes de salvar; a sessão continua (o banco é o mesmo). **Usar padrão** volta ao endereço com que o APK foi gerado.
+
+## 6. Instalar nos celulares (Android)
 
 - **Outras pessoas:** envie o `AlertaCidade.apk` (WhatsApp, Google Drive). No celular: abrir o arquivo → permitir
   "instalar apps desconhecidos" → Instalar. Se já tinham a versão anterior, instala por cima.
 - **Seu celular pelo cabo:** `& "$env:LOCALAPPDATA\Android\sdk\platform-tools\adb.exe" install -r $HOME\Downloads\AlertaCidade.apk`
 - Cada pessoa cria a própria conta no app. iPhone não é suportado.
 
-## 6. Manter no ar
+## 7. Manter no ar
 
 - O PC precisa ficar **ligado e sem suspender** (Configurações → Sistema → Energia → suspensão: "Nunca").
 - Os **4 terminais** precisam ficar abertos.
@@ -77,7 +87,7 @@ cd ..\..
 
 | Sintoma | Causa provável | O que fazer |
 |---|---|---|
-| App diz "Sem conexão com o servidor" | Túnel caiu ou mudou de endereço; API parada | Conferir os terminais 1 e 4; se o endereço mudou, refazer o passo 4 e reenviar o APK |
+| App diz "Sem conexão com o servidor" | Túnel caiu ou mudou de endereço; API parada | Conferir as janelas 1 e 4; se o endereço mudou, trocar no app (passo 5) |
 | `<endereço>/api/v1/health` não abre | Túnel não iniciou ou API não está na porta 3000 | Ver o terminal 4; abrir <http://localhost:3000/api/v1/health> |
 | Health mostra `"redis":"down"` ou `"database":"down"` | Docker parado | Abrir o Docker Desktop e `npm.cmd run infra:up` |
 | Push não chega | Worker de notificações parado | Ver o terminal 2 |

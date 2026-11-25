@@ -2,8 +2,20 @@
 ///   flutter run --dart-define=API_BASE_URL=http://192.168.0.10:3000
 ///
 /// Padrão: `10.0.2.2`, o endereço do computador hospedeiro visto pelo emulador Android.
+///
+/// O endereço pode ser trocado NO APARELHO (tela de login → "Servidor"), sem gerar outro APK:
+/// útil quando o túnel público muda de endereço. O salvo tem prioridade sobre o da compilação.
 abstract final class AppConfig {
-  static const apiBaseUrl = String.fromEnvironment('API_BASE_URL', defaultValue: 'http://10.0.2.2:3000');
+  /// Endereço com que o APK foi compilado.
+  static const builtInBaseUrl = String.fromEnvironment('API_BASE_URL', defaultValue: 'http://10.0.2.2:3000');
+  static String? _override;
+
+  /// Endereço em uso: o configurado no aparelho ou, sem ele, o da compilação.
+  static String get apiBaseUrl => _override ?? builtInBaseUrl;
+  static bool get hasOverride => _override != null;
+
+  /// Usado por [ServerSettings]; `null` volta ao endereço da compilação.
+  static void setOverride(String? baseUrl) => _override = baseUrl;
   static const appEnv = String.fromEnvironment('APP_ENV', defaultValue: 'development');
   static const appVersion = '2.0.0';
   static const tileUrlTemplate = String.fromEnvironment(
