@@ -141,6 +141,7 @@ apresentado foi verificado por execução, com evidências em [docs/testing](doc
 
 ## Documentação
 
+- **[Como o AlertaCidade funciona — explicação para leigos](docs/como-funciona.md)**
 - **[Regras de negócio e regras do app](docs/regras-de-negocio.md)**
 - **[Especificações técnicas](docs/especificacoes-tecnicas.md)** (linguagens, banco, versões, padrões)
 - **[Como colocar no ar e gerar o APK](docs/como-colocar-no-ar.md)** (túnel Cloudflare, instalação em outros celulares)
